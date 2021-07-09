@@ -17,6 +17,13 @@ for i in range(0, 5):
   k.goto(x, y)
   y += 30
   turtle_list.append(k)
+
+
+def display_result(msg):
+  turtle.color("black")
+  turtle.goto(-100, 0)
+  turtle.write(msg, True, align="left")
+
     
 
 if user_input:
@@ -27,11 +34,13 @@ while race_start:
   for turtle in turtle_list:
     if turtle.xcor() > -x:
       race_start = False
+      screen.clear()
       win = turtle.pencolor()
       if win == user_input:
-        print(f"You've won! The {win} turtle is the winner!")
+        msg = f"You've won! The {win} turtle is the winner!"
       else:
-        print(f"You've lost! The {win} turtle is the winner!")
+        msg = f"You've lost! The {win} turtle is the winner!"
+      display_result(msg)
     turtle.forward(random.randint(0, 10))
 
 
